@@ -81,6 +81,6 @@ $browser = $this->get('gremo_buzz');
 
 Refer to [Kris Wallsmith Buzz library](https://github.com/kriswallsmith/Buzz) for sending HTTP requests.
 
-## Panned features
+## Planned features
 - Add a tag for easily define services as listeners
 - Use the built-in listeners through the configuration
