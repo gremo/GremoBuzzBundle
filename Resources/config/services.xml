@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+                               http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="gremo_buzz.client.curl.class">Buzz\Client\Curl</parameter>
+        <parameter key="gremo_buzz.client.multi_curl.class">Buzz\Client\MultiCurl</parameter>
+        <parameter key="gremo_buzz.client.native.class">Buzz\Client\FileGetContents</parameter>
+        <parameter key="gremo_buzz.class">Buzz\Browser</parameter>
+    </parameters>
+
+    <services>
+        <service id="gremo_buzz.client" class="%gremo_buzz.client.class%" public="false" />
+        <service id="gremo_buzz" class="%gremo_buzz.class%">
+            <argument type="service" id="gremo_buzz.client" />
+        </service>
+    </services>
+</container>
