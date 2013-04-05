@@ -31,7 +31,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-Or, if you are using Composer and Symfony 2.1.*, add to `composer.json` file:
+If you are using Composer and Symfony >= 2.1.*, add the following to `composer.json` file:
 
 ```javascript
 {
