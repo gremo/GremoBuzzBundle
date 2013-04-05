@@ -29,21 +29,18 @@ class GremoBuzzExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        // Set the class parameter based on the chosen client
+        // Set the class parameter based on the client
         $container->setParameter(
             'gremo_buzz.client.class',
-            $container->getParameter(sprintf('gremo_buzz.client.%s.class', $config['client']))
+            $container->getParameter("gremo_buzz.client.{$config['client']}.class")
         );
 
         // Get the client definition
         $client = $container->getDefinition('gremo_buzz.client');
 
-        // Dynamically add a method call to the client
-        foreach($config['options'] as $name => $value) {
-            $client->addMethodCall(
-                sprintf('set%s', implode(array_map('ucfirst', explode('_', $name)))),
-                array($value)
-            );
+        // Dynamically add a method call to the chosen client
+        foreach ($config['options'] as $key => $val) {
+            $client->addMethodCall('set'.implode(array_map('ucfirst', explode('_', $key))), array($val));
         }
     }
 }

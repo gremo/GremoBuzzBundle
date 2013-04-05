@@ -48,7 +48,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testProcessIfClientIsValid($client)
     {
-        if(in_array(strtolower($client), array('curl', 'multi_curl')) && !extension_loaded('curl')) {
+        if (in_array(strtolower($client), array('curl', 'multi_curl')) && !extension_loaded('curl')) {
             $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException');
         }
 

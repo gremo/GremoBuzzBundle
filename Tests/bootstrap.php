@@ -13,4 +13,5 @@ if (!is_file($autoloadFile = __DIR__.'/../vendor/autoload.php')) {
     throw new \LogicException('Could not find vendor/autoload.php, make sure you ran composer.');
 }
 
+/** @noinspection PhpIncludeInspection */
 require $autoloadFile;

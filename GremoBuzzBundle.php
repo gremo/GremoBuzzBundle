@@ -11,8 +11,19 @@
 
 namespace Gremo\BuzzBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Gremo\BuzzBundle\DependencyInjection\Compiler\AddListenersPass;
 
 class GremoBuzzBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new AddListenersPass());
+    }
 }

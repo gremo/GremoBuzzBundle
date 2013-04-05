@@ -5,7 +5,7 @@ Symfony 2 Bundle for using the lightweight Buzz HTTP client.
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Planned features](#planned-features)
+- [Adding listeners](#adding-listners)
 
 ## Installation
 
@@ -31,7 +31,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-If you are using Composer and Symfony >= 2.1.*, add the following to `composer.json` file:
+If you are using [Composer](http://getcomposer.org/) and Symfony >= 2.1.*, add the following to `composer.json` file:
 
 ```javascript
 {
@@ -81,6 +81,62 @@ $browser = $this->get('gremo_buzz');
 
 Refer to [Kris Wallsmith Buzz library](https://github.com/kriswallsmith/Buzz) for sending HTTP requests.
 
-## Planned features
-- Add a tag for easily define services as listeners
-- Use the built-in listeners through the configuration
+## Adding listeners
+You can register a listener creating a service that implements `Buzz\Listener\ListenerInterface` and tagging it as
+`gremo_buzz.listener` (optionally defining a `priority` attribute). Higher priority means that the corresponding
+listener is executed first. Same priority would lead to unexpected behaviours, as well as not numerical ones.
+
+The following listener logs outgoing requests:
+
+```php
+use Buzz\Listener\ListenerInterface;
+use Buzz\Message\MessageInterface;
+use Buzz\Message\RequestInterface;
+use JMS\DiExtraBundle\Annotation as DI;
+use Psr\Log\LoggerInterface;
+
+/**
+ * @DI\Service("buzz.listener.logger")
+ * @DI\Tag("gremo_buzz.listener", attributes={"priority"=10})
+ */
+class BuzzLoggerListener implements ListenerInterface
+{
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private $logger;
+
+    /**
+     * @var float
+     */
+    private $startTime;
+
+    /**
+     * @DI\InjectParams({"logger" = @DI\Inject("logger")})
+     */
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    public function preSend(RequestInterface $request)
+    {
+        $this->startTime = microtime(true);
+    }
+
+    public function postSend(RequestInterface $request, MessageInterface $response)
+    {
+        $seconds = microtime(true) - $this->startTime;
+
+        $logger->info(sprintf(
+            'Sent "%s %s%s" in %dms',
+            $request->getMethod(),
+            $request->getHost(),
+            $request->getResource(),
+            round($seconds * 1000)
+        ));
+    }
+}
+```
+
+Note that this example uses the new `Psr\Log\LoggerInterface` and may not work for old versions of Symfony.
