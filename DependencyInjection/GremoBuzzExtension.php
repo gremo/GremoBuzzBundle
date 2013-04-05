@@ -35,10 +35,15 @@ class GremoBuzzExtension extends Extension
             $container->getParameter(sprintf('gremo_buzz.client.%s.class', $config['client']))
         );
 
-        // Dynamically add a method call to the chosen client
+        // Get the client definition
+        $client = $container->getDefinition('gremo_buzz.client');
+
+        // Dynamically add a method call to the client
         foreach($config['options'] as $name => $value) {
-            $method = sprintf('set%s', implode(array_map('ucfirst', explode('_', $name))));
-            $container->getDefinition('gremo_buzz.client')->addMethodCall($method, array($value));
+            $client->addMethodCall(
+                sprintf('set%s', implode(array_map('ucfirst', explode('_', $name)))),
+                array($value)
+            );
         }
     }
 }
