@@ -5,7 +5,7 @@ Symfony 2 Bundle for using the lightweight Buzz HTTP client.
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Adding listeners](#adding-listners)
+- [Adding listeners](#adding-listeners)
 
 ## Installation
 
