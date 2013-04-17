@@ -15,6 +15,9 @@ use Buzz\Listener\ListenerInterface;
 use Buzz\Message\MessageInterface;
 use Buzz\Message\RequestInterface;
 
+/**
+ * @SuppressWarnings("unused")
+ */
 class BuzzListener implements ListenerInterface
 {
     public function preSend(RequestInterface $request)

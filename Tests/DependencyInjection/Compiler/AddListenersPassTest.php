@@ -37,6 +37,7 @@ class AddListenersPassTest extends \PHPUnit_Framework_TestCase
             ->method('addMethodCall');
 
         /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->pass->process($container);
     }
 
@@ -58,6 +59,7 @@ class AddListenersPassTest extends \PHPUnit_Framework_TestCase
             ->method('addMethodCall');
 
         /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->pass->process($container);
     }
 
@@ -88,6 +90,7 @@ class AddListenersPassTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue('stdClass'));
 
         /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->pass->process($container);
     }
 
@@ -134,6 +137,7 @@ class AddListenersPassTest extends \PHPUnit_Framework_TestCase
         }
 
         /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->pass->process($container);
     }
 }
