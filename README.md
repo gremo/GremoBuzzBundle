@@ -1,4 +1,4 @@
-# GremoBuzzBundle [![Build Status](https://secure.travis-ci.org/gremo/GremoBuzzBundle.png)](http://travis-ci.org/gremo/GremoBuzzBundle)
+# GremoBuzzBundle [![Build Status](https://secure.travis-ci.org/gremo/GremoBuzzBundle.png)](http://travis-ci.org/gremo/GremoBuzzBundle) [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/7470962)](http://depending.in/gremo/GremoBuzzBundle)
 
 Symfony 2 Bundle for using the lightweight Buzz HTTP client.
 
