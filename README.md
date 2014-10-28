@@ -1,5 +1,6 @@
-# GremoBuzzBundle [![Build Status](https://secure.travis-ci.org/gremo/GremoBuzzBundle.png)](http://travis-ci.org/gremo/GremoBuzzBundle) [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/7470962)](http://depending.in/gremo/GremoBuzzBundle)
+[![Build Status](https://secure.travis-ci.org/gremo/GremoBuzzBundle.png)](http://travis-ci.org/gremo/GremoBuzzBundle) [![Dependencies Status](https://depending.in/gremo/GremoBuzzBundle.png)](http://depending.in/gremo/GremoBuzzBundle)
 
+# GremoBuzzBundle
 Symfony 2 Bundle for using the lightweight Buzz HTTP client.
 
 - [Installation](#installation)
@@ -31,7 +32,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-If you are using [Composer](http://getcomposer.org/) and Symfony >= 2.1.*, add the following to `composer.json` file:
+If you are using [Composer](http://getcomposer.org/) and Symfony >= 2.1.*, add the following to your `composer.json` file:
 
 ```javascript
 {
@@ -57,12 +58,11 @@ public function registerBundles()
 ```
 
 ## Configuration
-
-All options are optional. Reference, along with default values:
-
-```
+Configuration is not needed. Reference, along with default values:
+```yml
+# GremoBuzzBundle Configuration
 gremo_buzz:
-    client: native # Allowed values: "curl", "multi_curl" or "native"
+    client: "native" # allowed "curl", "multi_curl" or "native"
     options:
         ignore_errors: true
         max_redirects: 5
@@ -71,7 +71,6 @@ gremo_buzz:
 ```
 
 ## Usage
-
 Get `gremo_buzz` service from the service container and start using the browser:
 
 ```php
@@ -82,11 +81,11 @@ $browser = $this->get('gremo_buzz');
 Refer to [Kris Wallsmith Buzz library](https://github.com/kriswallsmith/Buzz) for sending HTTP requests.
 
 ## Adding listeners
-You can register a listener creating a service that implements `Buzz\Listener\ListenerInterface` and tagging it as
-`gremo_buzz.listener` (optionally defining a `priority` attribute). Higher priority means that the corresponding
-listener is executed first. Same priority would lead to unexpected behaviours, as well as not numerical ones.
+You can register a listener creating a service that implements `Buzz\Listener\ListenerInterface` and tagging it as `gremo_buzz.listener` (optionally defining a `priority` attribute).
 
-The following listener logs outgoing requests:
+Higher priority means that the corresponding listener is executed first. Same priority would lead to unexpected behaviours, as well as not numerical ones.
+
+An example listener that logs outgoing requests:
 
 ```php
 use Buzz\Listener\ListenerInterface;
