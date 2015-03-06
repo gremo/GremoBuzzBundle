@@ -1,6 +1,6 @@
-[![Build Status](https://secure.travis-ci.org/gremo/GremoBuzzBundle.png)](http://travis-ci.org/gremo/GremoBuzzBundle) [![Dependencies Status](https://depending.in/gremo/GremoBuzzBundle.png)](http://depending.in/gremo/GremoBuzzBundle)
-
 # GremoBuzzBundle
+[![Build status](https://img.shields.io/travis/gremo/GremoBuzzBundle.svg?style=flat-square)](https://travis-ci.org/gremo/GremoBuzzBundle) [![GitHub issues](https://img.shields.io/github/issues/gremo/GremoBuzzBundle.svg?style=flat-square)](https://github.com/gremo/GremoBuzzBundle/issues)  [![Latest stable](https://img.shields.io/packagist/v/gremo/buzz-bundle.svg?style=flat-square)](https://packagist.org/packages/gremo/buzz-bundle) [![Downloads total](https://img.shields.io/packagist/dt/gremo/buzz-bundle.svg?style=flat-square)](https://packagist.org/packages/gremo/buzz-bundle)
+
 Symfony 2 Bundle for using the lightweight Buzz HTTP client.
 
 - [Installation](#installation)
