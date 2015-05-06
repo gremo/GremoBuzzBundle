@@ -32,6 +32,7 @@ class AddListenersPass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds('gremo_buzz.listener') as $id => $attrs) {
             $class = $container->getDefinition($id)->getClass();
+            $class = $container->getParameterBag()->resolveValue($class);
 
             $reflector = new \ReflectionClass($class);
             $interface = 'Buzz\Listener\ListenerInterface';
