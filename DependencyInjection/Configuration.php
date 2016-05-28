@@ -67,6 +67,14 @@ class Configuration implements ConfigurationInterface
                                 ->thenInvalid('Value for option "timeout" must be an integer.')
                             ->end()
                         ->end()
+                        ->scalarNode('verify_host')
+                            ->validate()
+                                ->ifTrue(function ($v) {
+                                    return !is_int($v) && !(is_string($v) && ctype_digit($v));
+                                })
+                                ->thenInvalid('Value for option "verify_host" must be an integer.')
+                            ->end()
+                        ->end()
                         ->booleanNode('verify_peer')
                         ->end()
                     ->end()

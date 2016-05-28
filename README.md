@@ -67,6 +67,7 @@ gremo_buzz:
         ignore_errors: true
         max_redirects: 5
         timeout: 5
+        verify_host: 2
         verify_peer: true
 ```
 
