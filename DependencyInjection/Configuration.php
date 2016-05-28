@@ -59,6 +59,8 @@ class Configuration implements ConfigurationInterface
                                 ->thenInvalid('Value for option "max_redirects" must be an integer.')
                             ->end()
                         ->end()
+                        ->scalarNode('proxy')
+                        ->end()
                         ->scalarNode('timeout')
                             ->validate()
                                 ->ifTrue(function ($v) {

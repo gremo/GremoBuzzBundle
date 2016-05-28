@@ -66,6 +66,7 @@ gremo_buzz:
     options:
         ignore_errors: true
         max_redirects: 5
+        proxy: ~
         timeout: 5
         verify_host: 2
         verify_peer: true
