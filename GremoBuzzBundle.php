@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the GremoBuzzBundle package.
+ * This file is part of the buzz-bundle package.
  *
  * (c) Marco Polichetti <gremo1982@gmail.com>
  *
