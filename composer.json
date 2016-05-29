@@ -3,7 +3,6 @@
     "type": "symfony-bundle",
     "description": "Symfony 2 Bundle for using the lightweight Buzz HTTP client.",
     "keywords": ["buzz", "http client"],
-    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
@@ -19,9 +18,6 @@
         "kriswallsmith/buzz": ">= 0.6,<1.0"
     },
     "autoload": {
-        "psr-0": {
-            "Gremo\\BuzzBundle": ""
-        }
-    },
-    "target-dir" : "Gremo/BuzzBundle"
+        "psr-4": { "Gremo\\BuzzBundle\\": "" }
+    }
 }
